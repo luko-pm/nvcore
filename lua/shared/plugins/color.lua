@@ -1,4 +1,5 @@
 return{
+    --[[
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -22,20 +23,26 @@ return{
 
         config = function(_, opts)
             require("catppuccin").setup(opts) -- calling setup is optional
-            vim.cmd [[colorscheme catppuccin]]
+            vim.cmd [[colorscheme catppuccin] ]
         end,
     },
+    ]]--
 
---[[    
-  {
+    {
         "folke/tokyonight.nvim",
-        lazy = true,
+        lazy = false,
+        priority = 1000,
+
         opts = {
             style = "night",
             transparent = true,
         },
+
+        config = function(_, opts)
+            require("tokyonight").setup(opts) -- calling setup is optional
+            vim.cmd [[colorscheme tokyonight]]
+        end
     },
---]]
 
 --[[    
     { 
