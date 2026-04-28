@@ -1,13 +1,13 @@
 return{
     'barrettruth/canola.nvim',
-    --branch = 'canola',
+    branch = 'canola',
     opts = {},
     --dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     lazy = false,
 
     config = function()
-        require("oil").setup({
+        vim.g.canola = {
             default_file_explorer = true,
             columns = {"icon",},
 
@@ -15,6 +15,10 @@ return{
             watch_for_changes = true,
 
             skip_confirm_for_simple_edits = true,
+
+            view_options = {
+                show_hidden = true,
+            },
 
             -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
             -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
@@ -39,13 +43,6 @@ return{
                 ["gx"] = "actions.open_external",
                 ["g."] = { "actions.toggle_hidden", mode = "n" },
                 ["g\\"] = { "actions.toggle_trash", mode = "n" },
-            },
-
-            -- Set to false to disable all of the above keymaps
-            use_default_keymaps = true,
-
-            view_options = {
-                show_hidden = true,
             },
 
             -- Configuration for the floating window in oil.open_float
@@ -132,7 +129,10 @@ return{
             keymaps_help = {
                 border = nil,
             },
-        })
+        }
+
+
+        require('canola').setup()
 
         -- Open
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
