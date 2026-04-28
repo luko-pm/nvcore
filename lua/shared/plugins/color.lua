@@ -1,4 +1,5 @@
 return{
+    -- TOKYONIGHT TIENE UN ARCHIVO APARTE
     --[[
     {
         "catppuccin/nvim",
@@ -27,6 +28,7 @@ return{
         end,
     },
     ]]--
+    --[[
 
     {
         "folke/tokyonight.nvim",
@@ -40,9 +42,11 @@ return{
 
         config = function(_, opts)
             require("tokyonight").setup(opts) -- calling setup is optional
-            vim.cmd [[colorscheme tokyonight]]
+            vim.cmd [[colorscheme tokyonight] ]
         end
     },
+
+    ]]--
 
 --[[    
     { 
